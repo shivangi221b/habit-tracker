@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header__title">
+          <h1>Daily Habits</h1>
+          <p class="muted">Consistency is key. You’re doing great.</p>
+        </div>
+
+        <div class="header__meta">
+          <button type="button" class="primaryBtn primaryBtn--cta" data-action="add-habit" aria-label="Add a new habit">
+            <span aria-hidden="true">＋</span> <span>New Habit</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="focus" aria-labelledby="focusTitle">
+        <div class="focus__left">
+          <h2 id="focusTitle">Today’s Focus</h2>
+          <p class="muted">Small steps add up. Let’s get a win today.</p>
+        </div>
+        <div class="focus__right" id="focusContent"></div>
+      </section>
+
+      <main>
+        <div class="sectionHeader">
+          <h3>Your Habits</h3>
+        </div>
+        <div class="habits" id="habits"></div>
+      </main>
+
+      <footer class="footer">
+        <p class="muted">
+          Tip: You can use Edit History option for a habit to tap days in the calendar and update past completions.
+        </p>
+      </footer>
+    </div>
+
+    <!-- New habit modal -->
+    <div class="modalOverlay" id="modalOverlay" hidden></div>
+    <div class="modal" id="newHabitModal" role="dialog" aria-modal="true" aria-labelledby="newHabitTitle" hidden>
+      <div class="modalCard">
+        <div class="modal__header">
+          <div>
+            <div class="modal__title" id="newHabitTitle">Add a new habit</div>
+            <div class="modal__subtitle muted">Pick the completed days to set your starting streak.</div>
+          </div>
+          <button type="button" class="iconBtn" data-action="newhabit-cancel" aria-label="Close">✕</button>
+        </div>
+
+        <div class="modal__body">
+          <label class="field">
+            <div class="field__label">Habit name</div>
+            <input id="newHabitName" class="textInput" type="text" maxlength="48" placeholder="e.g., Read 20 pages" />
+          </label>
+
+          <div class="modal__calendar">
+            <div class="calendarHeader">
+              <div>
+                <div class="calendarHeader__title">Calendar (last 14 days)</div>
+                <div class="calendarHeader__hint">Tap days to mark completed</div>
+              </div>
+            </div>
+            <div class="days" id="newHabitDays" role="grid" aria-label="New habit calendar"></div>
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <button type="button" class="ghostBtn" data-action="newhabit-cancel">Cancel</button>
+          <button type="button" class="primaryBtn" data-action="newhabit-save">Create habit</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
